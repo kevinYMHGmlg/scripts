@@ -6,7 +6,7 @@
 	Vulcanic Heights = Dream 5
 ]]
 
-local IsPrivate=false
+local IsPrivate=true
 
 -- services
 local ReplicatedStorage=game:GetService'ReplicatedStorage'
