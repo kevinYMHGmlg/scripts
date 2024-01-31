@@ -369,8 +369,8 @@ local function main()
 
 		local aClass = a.Class
 		local bClass = b.Class
-		--if not aClass then aClass = a.Obj.ClassName a.Class = aClass end
-		--if not bClass then bClass = b.Obj.ClassName b.Class = bClass end
+		if not aClass then aClass = a.Obj.ClassName a.Class = aClass end
+		if not bClass then bClass = b.Obj.ClassName b.Class = bClass end
 
 		local aOrder = explorerOrders[aClass]
 		local bOrder = explorerOrders[bClass]
@@ -4846,7 +4846,7 @@ local function main()
 
 		funcs.Fire = function(self,...)
 			for i,v in next,self.Connections do
-				xpcall(coroutine.wrap(v.Func),function(e) warn(e.."\n"..debug.traceback()) end,...)
+				pcall(coroutine.wrap(v.Func),function(e) warn(e.."\n"..debug.traceback()) end,...)
 			end
 		end
 
@@ -6194,7 +6194,7 @@ local function main()
 		end
 
 		funcs.Show = function(self,data)
-			return static.ShowWindow(self,data)
+			return --static.ShowWindow(self,data)
 		end
 
 		funcs.ShowAndFocus = function(self,data)
@@ -6256,7 +6256,7 @@ local function main()
 			end
 
 			window.ClosedSide = nil
-			window.OnActivate:Fire()
+			--window.OnActivate:Fire()
 		end
 
 		static.ToggleSide = function(name)
@@ -10042,7 +10042,7 @@ local function main()
 
 		local disconnect = function(con)
 			local pos = table.find(con.Signal.Connections,con)
-			if pos then table.remove(con.Signal.Connections,pos) end
+			--if pos then table.remove(con.Signal.Connections,pos) end
 		end
 
 		funcs.Trigger = function(self,item,button)
@@ -11107,7 +11107,7 @@ Main = (function()
 		-- Init window system, create main menu, show explorer and properties
 		Lib.Window.Init()
 		Main.CreateMainGui()
-		Explorer.Window:Show({Align = "right", Pos = 1, Size = 0.5, Silent = true})
+		--Explorer.Window:Show({Align = "right", Pos = 1, Size = 0.5, Silent = true})
 		Properties.Window:Show({Align = "right", Pos = 2, Size = 0.5, Silent = true})
 		Lib.DeferFunc(function() Lib.Window.ToggleSide("right") end)
 	end
