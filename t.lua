@@ -369,8 +369,8 @@ local function main()
 
 		local aClass = a.Class
 		local bClass = b.Class
-		if not aClass then aClass = a.Obj.ClassName a.Class = aClass end
-		if not bClass then bClass = b.Obj.ClassName b.Class = bClass end
+		--if not aClass then aClass = a.Obj.ClassName a.Class = aClass end
+		--if not bClass then bClass = b.Obj.ClassName b.Class = bClass end
 
 		local aOrder = explorerOrders[aClass]
 		local bOrder = explorerOrders[bClass]
