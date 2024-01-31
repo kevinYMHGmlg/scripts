@@ -4803,7 +4803,7 @@ local function main()
 	end
 
 	Lib.DeferFunc = function(f,...)
-		signalWait(renderStepped)
+		--signalWait(renderStepped)
 		return f(...)
 	end
 	
@@ -4846,7 +4846,7 @@ local function main()
 
 		funcs.Fire = function(self,...)
 			for i,v in next,self.Connections do
-				xpcall(coroutine.wrap(v.Func),function(e) warn(e.."\n"..debug.traceback()) end,...)
+				pcall(coroutine.wrap(v.Func),function(e) warn(e.."\n"..debug.traceback()) end,...)
 			end
 		end
 
@@ -6266,7 +6266,7 @@ local function main()
 				if side.Hidden then
 					v.OnDeactivate:Fire()
 				else
-					v.OnActivate:Fire()
+					--v.OnActivate:Fire()
 				end
 			end
 			updateWindows()
@@ -11109,7 +11109,7 @@ Main = (function()
 		Main.CreateMainGui()
 		Explorer.Window:Show({Align = "right", Pos = 1, Size = 0.5, Silent = true})
 		Properties.Window:Show({Align = "right", Pos = 2, Size = 0.5, Silent = true})
-		Lib.DeferFunc(function() Lib.Window.ToggleSide("right") end)
+		--Lib.DeferFunc(function() Lib.Window.ToggleSide("right") end)
 	end
 	
 	return Main
