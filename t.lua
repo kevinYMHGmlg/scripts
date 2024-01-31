@@ -4894,7 +4894,7 @@ local function main()
 		end
 
 		funcs.Remove = function(self,obj)
-			if not self.Map[obj] then return end
+			--if not self.Map[obj] then return end
 
 			local list = self.List
 			local pos = table.find(list,obj)
